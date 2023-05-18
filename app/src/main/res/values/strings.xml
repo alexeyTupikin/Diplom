@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">ChatTest1</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="EmailTextInLoginWindow">Электронная почта</string>
+    <string name="PasswordTextInLoginWindow">Пароль</string>
+    <string name="AuthTextInLoginWindow">Авторизоваться</string>
+    <string name="RegistrationTextInLoginAct">Зарегистрироваться</string>
+    <string name="textmessage">textMessage</string>
+    <string name="username">userName</string>
+    <string name="send">Отправить</string>
+    <string name="hintMessage">Сообщение:</string>
+    <string name="singOutTextForMenu">Выйти</string>
+    <string name="nameHint">Имя:</string>
+    <string name="lastNameHint">Фамилия:</string>
+    <string name="singOutText">Выйти</string>
+    <string name="setPhotoText">🗘</string>
+    <string name="heightText">Рост:</string>
+    <string name="weightText">Вес:</string>
+    <string name="yearsText">Возраст:</string>
+    <string name="saveInfoText">Сохранить</string>
+    <string name="targetText">Опишите цель тренировок:</string>
+    <string name="trainingTimeText">Опишите в какие дни недели и в какое\nвремя вы можете заниматься:</string>
+    <string name="textDopInfo">Дополнительная информация:</string>
+    <string name="addApplicationsButtonText">Создать заявку</string>
+    <string name="applicationsText">Здесь будет ваша заявка</string>
+
+    <string-array name="place">
+        <item>Дома</item>
+        <item>В зале</item>
+    </string-array>
+
+    <string-array name="lvlOfTraining">
+        <item>Начальный</item>
+        <item>Средний</item>
+        <item>Продвинутый</item>
+    </string-array>
+</resources>
