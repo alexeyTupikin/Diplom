@@ -1,4 +1,4 @@
-package com.example.chattest1
+package com.example.graduationproject
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,14 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.example.chattest1.DataApplications.ApplicationsModel
-import com.example.chattest1.DataUserPersonal.UserModel
-import com.example.chattest1.databinding.ActivityPersonalAreaWindowBinding
+import com.example.graduationproject.DataApplications.ApplicationsModel
+import com.example.graduationproject.DataUserPersonal.UserModel
+import com.example.graduationproject.databinding.ActivityPersonalAreaWindowBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -24,7 +23,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import org.w3c.dom.Text
 import java.io.ByteArrayOutputStream
 
 class PersonalAreaWindow : AppCompatActivity() {

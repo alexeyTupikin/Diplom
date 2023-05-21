@@ -1,4 +1,4 @@
-package com.example.chattest1
+package com.example.graduationproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chattest1.DataMessage.MessageAdapter
-import com.example.chattest1.DataMessage.MessageModel
-import com.example.chattest1.databinding.ActivityChatWindowBinding
+import com.example.graduationproject.DataMessage.MessageAdapter
+import com.example.graduationproject.DataMessage.MessageModel
+import com.example.graduationproject.databinding.ActivityChatWindowBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -41,7 +41,8 @@ class ChatWindow : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         val database = Firebase.database
-        val refMessage = database.getReference("messages")
+        val clientName = intent.extras?.getString("client")
+        val refMessage = database.getReference("messages").child("${clientName}|${auth.currentUser?.email.toString().substringBefore('@')}")
 
         buttonSend.setOnClickListener {
             refMessage.child(refMessage.push().key ?: " ")

@@ -1,4 +1,4 @@
-package com.example.chattest1.DataApplications
+package com.example.graduationproject.DataApplications
 
 data class ApplicationsModel (
     val userName: String? = null,
@@ -8,5 +8,6 @@ data class ApplicationsModel (
     val time: String? = null,
     val dopInfo: String? = null,
     val status: String? = null,
-    val date: String? = null
+    val date: String? = null,
+    var coach: String? = null
 )

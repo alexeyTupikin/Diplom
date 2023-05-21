@@ -1,4 +1,4 @@
-package com.example.chattest1
+package com.example.graduationproject
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

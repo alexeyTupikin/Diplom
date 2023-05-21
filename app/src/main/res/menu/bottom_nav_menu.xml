@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/applicationsList"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/ApplicationsTextNav" />
+
+    <item
+        android:id="@+id/chatList"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="@string/ChatTextNav" />
+
+</menu>

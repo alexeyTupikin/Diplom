@@ -1,4 +1,4 @@
-package com.example.chattest1
+package com.example.graduationproject
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import com.example.chattest1.databinding.ActivityLoginWindowBinding
+import com.example.graduationproject.databinding.ActivityLoginWindowBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -52,14 +51,13 @@ class LoginWindow : AppCompatActivity() {
                         Log.d(TAG, "signInWithEmail:success")
                         Toast.makeText(baseContext, "Authentication success.", Toast.LENGTH_SHORT).show()
                         val user = auth.currentUser
-//                        if(user?.email.toString().contains(Regex("""@scvibor\.ru"""))) {
-//                            //если true, значит это тренер
-//                        } else {
-//                            //если false, значит клиент
-//                        }
-                        val goChatWindowIntent = Intent(this, PersonalAreaWindow::class.java)
-                        //goChatWindowIntent.putExtra(EMAIL, user!!.email)
-                        startActivity(goChatWindowIntent)
+                        if(user?.email.toString().contains(Regex("""@scvibor\.ru"""))) {
+                            val goCoachAreaIntent = Intent(this, CoachArea::class.java)
+                            startActivity(goCoachAreaIntent)
+                        } else {
+                            val goChatWindowIntent = Intent(this, PersonalAreaWindow::class.java)
+                            startActivity(goChatWindowIntent)
+                        }
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()

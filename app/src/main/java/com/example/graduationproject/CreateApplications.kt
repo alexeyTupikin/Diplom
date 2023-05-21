@@ -1,20 +1,18 @@
-package com.example.chattest1
+package com.example.graduationproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import com.example.chattest1.DataApplications.ApplicationsModel
-import com.example.chattest1.DataUserPersonal.UserModel
-import com.example.chattest1.databinding.ActivityCreateApplicationsBinding
+import com.example.graduationproject.DataApplications.ApplicationsModel
+import com.example.graduationproject.databinding.ActivityCreateApplicationsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Date
 
 class CreateApplications : AppCompatActivity() {
 
@@ -58,7 +56,8 @@ class CreateApplications : AppCompatActivity() {
                 status = "Создана",
                 date = LocalDateTime.now()
                     .format(DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm"))
-                    .toString()
+                    .toString(),
+                coach = null
             ))
             finish()
         }

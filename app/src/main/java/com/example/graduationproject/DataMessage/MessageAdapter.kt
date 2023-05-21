@@ -1,10 +1,10 @@
-package com.example.chattest1.DataMessage
+package com.example.graduationproject.DataMessage
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chattest1.databinding.MessageItemModelBinding
+import com.example.graduationproject.databinding.MessageItemModelBinding
 
 class MessageAdapter: RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 

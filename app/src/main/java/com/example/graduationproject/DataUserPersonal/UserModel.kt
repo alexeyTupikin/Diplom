@@ -1,4 +1,4 @@
-package com.example.chattest1.DataUserPersonal
+package com.example.graduationproject.DataUserPersonal
 
 data class UserModel (
     val name: String? = null,

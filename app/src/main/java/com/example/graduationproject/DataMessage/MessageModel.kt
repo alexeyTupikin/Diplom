@@ -1,4 +1,4 @@
-package com.example.chattest1.DataMessage
+package com.example.graduationproject.DataMessage
 
 data class MessageModel(
     val userName: String? = null,

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/applicationsList">
+
+    <fragment
+        android:id="@+id/applicationsList"
+        android:name="com.example.graduationproject.ApplicationsList"
+        android:label="fragment_applications_list"
+        tools:layout="@layout/fragment_applications_list" />
+
+    <fragment
+        android:id="@+id/chatList"
+        android:name="com.example.graduationproject.ChatList"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" />
+
+</navigation>

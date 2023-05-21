@@ -15,8 +15,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ChatTest1"
+        android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
+        <activity
+            android:name=".CoachArea"
+            android:exported="false"
+            android:label="@string/title_activity_coach_area" />
         <activity
             android:name=".CreateApplications"
             android:exported="false" />
