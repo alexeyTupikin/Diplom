@@ -37,6 +37,7 @@ class ApplicationsAdapter: RecyclerView.Adapter<ApplicationsAdapter.Applications
             dateText.text = application.date
             acceptButton.setOnClickListener {
                 application.coach = auth.currentUser?.email.toString().substringBefore('@')
+                application.status = "В обработке"
                 val db = Firebase.database
                 val ref = db.getReference("applications").child(application.userName.toString())
                 ref.setValue(application)

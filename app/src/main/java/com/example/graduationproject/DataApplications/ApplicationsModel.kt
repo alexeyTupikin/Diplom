@@ -7,7 +7,7 @@ data class ApplicationsModel (
     val lvl: String? = null,
     val time: String? = null,
     val dopInfo: String? = null,
-    val status: String? = null,
+    var status: String? = null,
     val date: String? = null,
     var coach: String? = null
 )
