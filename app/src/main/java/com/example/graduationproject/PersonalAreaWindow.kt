@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.marginBottom
 import com.example.graduationproject.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataUserPersonal.UserModel
 import com.example.graduationproject.databinding.ActivityPersonalAreaWindowBinding
@@ -123,6 +124,7 @@ class PersonalAreaWindow : AppCompatActivity() {
                 yearsTextView.text.toString()
             ))
             uploadImage()
+
         }
 
         buttonAddApplications.setOnClickListener {

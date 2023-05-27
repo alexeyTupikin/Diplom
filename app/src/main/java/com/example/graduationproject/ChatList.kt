@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.DataApplications.ApplicationsAdapter
 import com.example.graduationproject.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataChat.ChatAdapter
 import com.example.graduationproject.DataChat.ChatModel
 import com.example.graduationproject.DataMessage.MessageModel
+import com.example.graduationproject.databinding.FragmentChatListBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -53,37 +55,29 @@ class ChatList : Fragment() {
         dRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listChat = mutableListOf<ChatModel>()
-                val listMessage = mutableListOf<MessageModel>()
                 for(s in snapshot.children){
                     val chat = s.getValue(ApplicationsModel::class.java)
                     if((chat != null) && (chat.coach == auth.currentUser?.email.toString().substringBefore('@'))) {
-                        val db = Firebase.database
-                        val refMessage = db.getReference("messages") //.child("${chat.userName.toString()}|${auth.currentUser?.email.toString().substringBefore('@')}")
-                        refMessage.addValueEventListener(object : ValueEventListener {
+                        val refLastMessage = Firebase.database.getReference("messages").child("${chat.userName}|${chat.coach}")
+                        refLastMessage.addValueEventListener(object : ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                val listMessage = mutableListOf<MessageModel>()
-                                for(s in snapshot.children) {
+                                val listMessages = mutableListOf<MessageModel>()
+                                for(s in snapshot.children){
                                     val message = s.getValue(MessageModel::class.java)
-                                    if((message != null) && (message.userName == chat.userName)) {
-                                        listMessage.add(message)
+                                    if(message != null) {
+                                        listMessages.add(message)
                                     }
                                 }
+                                val itemChat = ChatModel(chat.userName, listMessages.last().textMessage)
+                                listChat.add(itemChat)
+                                adapter.setListChat(listChat)
                             }
-
                             override fun onCancelled(error: DatabaseError) {
                             }
                         })
-                        var lastMessageText: String? = null
-                        if(listMessage.isNotEmpty()) {
-                            lastMessageText = listMessage.last().textMessage.toString()
-                        }
-                        val itemChat = ChatModel(chat.userName, lastMessageText)
-                        listChat.add(itemChat)
                     }
                 }
-                adapter.setListChat(listChat)
             }
-
             override fun onCancelled(error: DatabaseError) {
             }
         })

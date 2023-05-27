@@ -66,7 +66,6 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
         val appInfo = Intent(_context, ApplicationInfo::class.java)
         appInfo.putExtra("client", client)
         startActivity(_context!!, appInfo, null)
-
     }
 
 }
