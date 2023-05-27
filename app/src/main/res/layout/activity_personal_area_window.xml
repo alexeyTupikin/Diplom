@@ -13,40 +13,50 @@
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
-        android:scaleType="fitXY"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
-        tools:srcCompat="@drawable/icons8_account_100" />
+        tools:srcCompat="@drawable/user__1_" />
 
     <EditText
         android:id="@+id/nameTextView"
+        style="@style/editTextStyle"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:hint="@string/nameHint"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPhoto"
-        android:inputType="text" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSetPhoto" />
 
     <EditText
         android:id="@+id/lastNameTextView"
+        style="@style/editTextStyle"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:hint="@string/lastNameHint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPhoto" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSetPhoto" />
 
     <Button
         android:id="@+id/buttonSingOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
+        style="@style/buttonStyle"
         android:text="@string/singOutText"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/userPhoto"
@@ -54,24 +64,28 @@
 
     <ImageButton
         android:id="@+id/buttonSetPhoto"
-        android:layout_width="wrap_content"
+        style="@style/buttonStyle"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="10dp"
         android:backgroundTintMode="screen"
-        app:layout_constraintBottom_toBottomOf="@+id/userPhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/userPhoto"
-        app:layout_constraintTop_toTopOf="@+id/userPhoto"
-        app:srcCompat="@drawable/icons8_gallery_48"/>
+        app:layout_constraintEnd_toEndOf="@+id/userPhoto"
+        app:layout_constraintStart_toStartOf="@+id/userPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/userPhoto"
+        app:srcCompat="@drawable/icons8_gallery_48" />
 
     <EditText
         android:id="@+id/heightTextView"
+        style="@style/editTextStyle"
         android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:hint="@string/heightText"
         android:inputType="number"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
@@ -81,6 +95,10 @@
         android:hint="@string/weightText"
         android:layout_height="wrap_content"
         android:inputType="number"
+        style="@style/editTextStyle"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toStartOf="@+id/yearsTextView"
         app:layout_constraintStart_toEndOf="@+id/heightTextView"
@@ -88,12 +106,16 @@
 
     <EditText
         android:id="@+id/yearsTextView"
+        style="@style/editTextStyle"
         android:layout_width="80dp"
-        android:hint="@string/yearsText"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
+        android:hint="@string/yearsText"
         android:inputType="number"
-        android:layout_marginEnd="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameTextView" />
 
@@ -102,6 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        style="@style/buttonStyle"
         android:text="@string/saveInfoText"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +134,7 @@
     <TextView
         android:id="@+id/textViewApplications"
         android:layout_width="350dp"
+        style="@style/textViewStyle"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="10dp"
@@ -121,13 +145,25 @@
 
     <Button
         android:id="@+id/buttonAddApplications"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:text="@string/addApplicationsButtonText"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/textViewApplications"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewApplications" />
+
+    <Button
+        android:id="@+id/buttonChat"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Чат"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAddApplications"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddApplications" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

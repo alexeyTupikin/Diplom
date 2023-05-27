@@ -1,5 +1,6 @@
 package com.example.graduationproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,7 +37,7 @@ class ApplicationsList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.rv_applications)
-        adapter = ApplicationsAdapter()
+        adapter = ApplicationsAdapter(this.context)
         recyclerView.adapter = adapter
 
         val database = Firebase.database
@@ -56,7 +57,6 @@ class ApplicationsList : Fragment() {
                 }
                 adapter.setListApplications(listApplications)
             }
-
             override fun onCancelled(error: DatabaseError) {
             }
         })

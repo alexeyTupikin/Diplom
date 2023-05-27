@@ -8,32 +8,38 @@
 
     <EditText
         android:id="@+id/editTextTarget"
+        style="@style/editTextStyle"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:ems="10"
-        android:maxLines="7"
-        android:inputType="textMultiLine"
         android:hint="@string/targetText"
+        android:inputType="textMultiLine"
+        android:maxLines="7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerPlace"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
+        style="@style/buttonStyle"
         android:entries="@array/place"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTarget" />
 
     <Spinner
         android:id="@+id/spinnerLvLTraining"
-        android:layout_width="170dp"
+        android:layout_width="130dp"
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
+        style="@style/buttonStyle"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:entries="@array/lvlOfTraining"
@@ -41,27 +47,37 @@
 
     <EditText
         android:id="@+id/editTextTrainingTime"
+        style="@style/editTextStyle"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+
         android:layout_marginTop="30dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+
+        android:backgroundTintMode="add"
         android:ems="10"
-        android:maxLines="7"
-        android:inputType="textMultiLine"
         android:hint="@string/trainingTimeText"
+        android:inputType="textMultiLine"
+        android:maxLines="7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPlace" />
 
     <EditText
         android:id="@+id/editTextDopInfo"
+        style="@style/editTextStyle"
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
+        android:background="@color/edit_text_background"
+        android:backgroundTint="@color/hint_color"
+        android:backgroundTintMode="add"
         android:ems="10"
-        android:maxLines="7"
-        android:inputType="textMultiLine"
         android:hint="@string/textDopInfo"
+        android:inputType="textMultiLine"
+        android:maxLines="7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTrainingTime" />
 
@@ -71,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
         android:text="@string/saveInfoText"
+        style="@style/buttonStyle"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

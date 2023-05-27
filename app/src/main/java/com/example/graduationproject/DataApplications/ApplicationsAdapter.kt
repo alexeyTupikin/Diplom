@@ -1,9 +1,16 @@
 package com.example.graduationproject.DataApplications
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.graduationproject.ApplicationInfo
+import com.example.graduationproject.ChatList
+import com.example.graduationproject.ChatWindow
 import com.example.graduationproject.DataMessage.MessageAdapter
 import com.example.graduationproject.DataMessage.MessageModel
 import com.example.graduationproject.databinding.ApplicationsItemModelBinding
@@ -13,10 +20,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class ApplicationsAdapter: RecyclerView.Adapter<ApplicationsAdapter.ApplicationsViewHolder>() {
+class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsAdapter.ApplicationsViewHolder>() {
 
     private var listApplications = emptyList<ApplicationsModel>()
     private lateinit var auth: FirebaseAuth
+    private var _context = context
 
     class ApplicationsViewHolder(val binding: ApplicationsItemModelBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -42,6 +50,9 @@ class ApplicationsAdapter: RecyclerView.Adapter<ApplicationsAdapter.Applications
                 val ref = db.getReference("applications").child(application.userName.toString())
                 ref.setValue(application)
             }
+            itemList.setOnClickListener {
+                applicationInfo(application.userName.toString())
+            }
         }
     }
 
@@ -49,6 +60,13 @@ class ApplicationsAdapter: RecyclerView.Adapter<ApplicationsAdapter.Applications
     fun setListApplications(list: MutableList<ApplicationsModel>) {
         listApplications = list
         notifyDataSetChanged()
+    }
+
+    private fun applicationInfo(client: String) {
+        val appInfo = Intent(_context, ApplicationInfo::class.java)
+        appInfo.putExtra("client", client)
+        startActivity(_context!!, appInfo, null)
+
     }
 
 }

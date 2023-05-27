@@ -27,6 +27,7 @@ class ChatWindow : AppCompatActivity() {
     lateinit var editTextMessage: EditText
     lateinit var buttonSend: Button
     lateinit var adapter: MessageAdapter
+    lateinit var refMessage: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +43,12 @@ class ChatWindow : AppCompatActivity() {
 
         val database = Firebase.database
         val clientName = intent.extras?.getString("client")
-        val refMessage = database.getReference("messages").child("${clientName}|${auth.currentUser?.email.toString().substringBefore('@')}")
+        val coachName = intent.extras?.getString("coach")
+        if(clientName != null) {
+            refMessage = database.getReference("messages").child("${clientName}|${auth.currentUser?.email.toString().substringBefore('@')}")
+        } else {
+            refMessage = database.getReference("messages").child("${auth.currentUser?.email.toString().substringBefore('@')}|${coachName}")
+        }
 
         buttonSend.setOnClickListener {
             refMessage.child(refMessage.push().key ?: " ")

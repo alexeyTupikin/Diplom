@@ -43,6 +43,7 @@ class PersonalAreaWindow : AppCompatActivity() {
     lateinit var buttonSingOut: Button
     lateinit var buttonAddApplications: Button
     lateinit var applicationsText: TextView
+    lateinit var buttonChat: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +61,7 @@ class PersonalAreaWindow : AppCompatActivity() {
         buttonSingOut = binding.buttonSingOut
         buttonAddApplications = binding.buttonAddApplications
         applicationsText = binding.textViewApplications
+        buttonChat = binding.buttonChat
 
         authUser = Firebase.auth
         userName = authUser.currentUser?.email.toString().substringBefore('@')
@@ -133,6 +135,23 @@ class PersonalAreaWindow : AppCompatActivity() {
             finish()
         }
 
+        buttonChat.setOnClickListener {
+            val db = Firebase.database
+            val ref = db.getReference("applications").child(userName)
+            ref.get().addOnSuccessListener {
+                ref.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val application = snapshot.getValue(ApplicationsModel::class.java)
+                        if((application != null) && (application.coach != null)) {
+                            returnCoach(application.coach!!)
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+            }
+        }
+
     }
 
     private fun uploadImage(){
@@ -160,5 +179,11 @@ class PersonalAreaWindow : AppCompatActivity() {
 
     companion object {
         const val CAMERA_REQ_CODE = 100
+    }
+
+    fun returnCoach(coach: String) {
+        val intent = Intent(this, ChatWindow::class.java)
+        intent.putExtra("coach", coach)
+        startActivity(intent)
     }
 }
