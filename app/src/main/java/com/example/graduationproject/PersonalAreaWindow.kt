@@ -12,7 +12,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.marginBottom
+import com.example.graduationproject.DataApplications.ApplicationsAdapter
 import com.example.graduationproject.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataUserPersonal.UserModel
 import com.example.graduationproject.databinding.ActivityPersonalAreaWindowBinding
@@ -66,6 +68,12 @@ class PersonalAreaWindow : AppCompatActivity() {
 
         authUser = Firebase.auth
         userName = authUser.currentUser?.email.toString().substringBefore('@')
+
+        applicationsText.setOnClickListener {
+            val appInfo = Intent(this, ApplicationInfo::class.java)
+            appInfo.putExtra("client", userName)
+            ContextCompat.startActivity(this, appInfo, null)
+        }
 
         val database = Firebase.database
         Firebase.storage.reference.child(authUser.currentUser?.email.toString()).getBytes(1024*1024).addOnSuccessListener { data ->

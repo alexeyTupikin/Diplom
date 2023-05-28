@@ -55,7 +55,7 @@ class CreateApplications : AppCompatActivity() {
                 dopInfo.text.toString(),
                 status = "Создана",
                 date = LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm"))
+                    .format(DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm"))
                     .toString(),
                 coach = null
             ))

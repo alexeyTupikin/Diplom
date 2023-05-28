@@ -42,6 +42,7 @@
         <item>Средний</item>
         <item>Продвинутый</item>
     </string-array>
+
     <string name="title_activity_coach_area">CoachArea</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

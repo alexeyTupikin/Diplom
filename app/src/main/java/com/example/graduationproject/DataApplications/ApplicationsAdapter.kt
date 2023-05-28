@@ -5,16 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.ApplicationInfo
-import com.example.graduationproject.ChatList
-import com.example.graduationproject.ChatWindow
-import com.example.graduationproject.DataMessage.MessageAdapter
-import com.example.graduationproject.DataMessage.MessageModel
+import com.example.graduationproject.CreateWorkoutPlan
 import com.example.graduationproject.databinding.ApplicationsItemModelBinding
-import com.example.graduationproject.databinding.MessageItemModelBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -49,6 +44,7 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
                 val db = Firebase.database
                 val ref = db.getReference("applications").child(application.userName.toString())
                 ref.setValue(application)
+                createWorkoutPlan()
             }
             itemList.setOnClickListener {
                 applicationInfo(application.userName.toString())
@@ -62,10 +58,15 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
         notifyDataSetChanged()
     }
 
-    private fun applicationInfo(client: String) {
+    fun applicationInfo(client: String) {
         val appInfo = Intent(_context, ApplicationInfo::class.java)
         appInfo.putExtra("client", client)
         startActivity(_context!!, appInfo, null)
+    }
+
+    fun createWorkoutPlan() {
+        val createWorkoutPlanIntent = Intent(_context, CreateWorkoutPlan::class.java)
+        startActivity(_context!!, createWorkoutPlanIntent, null)
     }
 
 }

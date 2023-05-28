@@ -1,11 +1,16 @@
 package com.example.graduationproject
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity.*
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
 import com.example.graduationproject.DataApplications.ApplicationsModel
-import com.example.graduationproject.DataMessage.MessageModel
 import com.example.graduationproject.DataUserPersonal.UserModel
 import com.example.graduationproject.databinding.ActivityApplicationInfoBinding
 import com.google.firebase.database.DataSnapshot
@@ -13,13 +18,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 class ApplicationInfo : AppCompatActivity() {
 
     lateinit var binding: ActivityApplicationInfoBinding
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityApplicationInfoBinding.inflate(layoutInflater)
@@ -31,6 +37,7 @@ class ApplicationInfo : AppCompatActivity() {
         getApplicationInfo(refApplication)
         val refClient = db.getReference("accounts").child(clientName)
         getClientInfo(refClient)
+
     }
 
     private fun getClientInfo(dRef: DatabaseReference) {
