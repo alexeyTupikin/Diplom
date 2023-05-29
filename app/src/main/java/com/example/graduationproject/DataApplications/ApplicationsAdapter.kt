@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.ApplicationInfo
 import com.example.graduationproject.CreateWorkoutPlan
+import com.example.graduationproject.TrenerArea
 import com.example.graduationproject.databinding.ApplicationsItemModelBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -44,7 +45,7 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
                 val db = Firebase.database
                 val ref = db.getReference("applications").child(application.userName.toString())
                 ref.setValue(application)
-                createWorkoutPlan()
+                createWorkoutPlan(application.lvl.toString())
             }
             itemList.setOnClickListener {
                 applicationInfo(application.userName.toString())
@@ -64,8 +65,9 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
         startActivity(_context!!, appInfo, null)
     }
 
-    fun createWorkoutPlan() {
-        val createWorkoutPlanIntent = Intent(_context, CreateWorkoutPlan::class.java)
+    fun createWorkoutPlan(lvl: String) {
+        val createWorkoutPlanIntent = Intent(_context, TrenerArea::class.java)
+        createWorkoutPlanIntent.putExtra("lvl", lvl)
         startActivity(_context!!, createWorkoutPlanIntent, null)
     }
 

@@ -14,6 +14,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.childEvents
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.delay
@@ -26,7 +27,6 @@ class CreateWorkoutPlan : AppCompatActivity() {
     private lateinit var listExercise: MutableList<uprModel>
     private lateinit var listContent: MutableList<String>
 
-
     @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,36 +36,47 @@ class CreateWorkoutPlan : AppCompatActivity() {
         val db = Firebase.database
         val refExercise = db.getReference("physicalExercise")
 
+        val lvlClient = intent.extras?.getString("lvl")
+        Toast.makeText(this, lvlClient, Toast.LENGTH_LONG).show()
+
         listExercise = mutableListOf()
         listContent = mutableListOf()
+
         for(i in 1..17) {
             getExerciseList(refExercise.child(i.toString()))
         }
 
         binding.buttonAddExercise.setOnClickListener {
+
             binding.textExercisesDay.text = "${binding.textExercisesDay.text}" +
-                    "${listExercise[binding.spinnerExercise.selectedItemId.toInt()].content} | ${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
-        }
+                    "${listExercise[binding.spinnerExercise.selectedItemId.toInt()].content} | "
 
-        binding.buttonAddDay.setOnClickListener {
-            val myTextView = TextView(this)
-            myTextView.apply {
-                background = getDrawable(R.color.edit_text_background)
-                backgroundTintList = getColorStateList(R.color.hint_color)
-                backgroundTintMode = PorterDuff.Mode.ADD
+            when(lvlClient) {
+                "Начальнай" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
+                "Средний" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
+                "Продвинутый" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
             }
-
-            val textLP = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-            textLP.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID
-            textLP.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID
-            textLP.topToBottom = R.id.spinnerExercise
-            textLP.marginStart = binding.textExercisesDay.marginStart
-            textLP.marginEnd = binding.textExercisesDay.marginEnd
-            textLP.topMargin = 100
-
-            binding.root.addView(myTextView, textLP)
-
         }
+
+//        binding.buttonAddDay.setOnClickListener {
+//            val myTextView = TextView(this)
+//            myTextView.apply {
+//                background = getDrawable(R.color.edit_text_background)
+//                backgroundTintList = getColorStateList(R.color.hint_color)
+//                backgroundTintMode = PorterDuff.Mode.ADD
+//            }
+//
+//            val textLP = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+//            textLP.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID
+//            textLP.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID
+//            textLP.topToBottom = R.id.spinnerExercise
+//            textLP.marginStart = binding.textExercisesDay.marginStart
+//            textLP.marginEnd = binding.textExercisesDay.marginEnd
+//            textLP.topMargin = 100
+//
+//            binding.root.addView(myTextView, textLP)
+//
+//        }
 
     }
 

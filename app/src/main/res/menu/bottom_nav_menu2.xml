@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragmentWorkoutPlanDay1"
+        android:icon="@drawable/circle_1"
+        android:title="День 1" />
+
+    <item
+        android:id="@+id/fragmentWorkoutPlanDay2"
+        android:icon="@drawable/circle_2"
+        android:title="День 2" />
+
+    <item
+        android:id="@+id/fragmentWorkoutPlanDay3"
+        android:icon="@drawable/circle_3"
+        android:title="День 3" />
+
+</menu>

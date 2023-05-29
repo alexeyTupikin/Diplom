@@ -51,4 +51,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ApplicationsTextNav">Заявки</string>
     <string name="ChatTextNav">Чаты</string>
+    <string name="title_activity_trener_area">TrenerArea</string>
 </resources>

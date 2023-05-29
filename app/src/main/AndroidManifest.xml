@@ -18,6 +18,10 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
+            android:name=".TrenerArea"
+            android:exported="false"
+            android:label="@string/title_activity_trener_area" />
+        <activity
             android:name=".CreateWorkoutPlan"
             android:exported="false" />
         <activity

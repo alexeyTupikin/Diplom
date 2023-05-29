@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.DataApplications.ApplicationsAdapter
 import com.example.graduationproject.DataApplications.ApplicationsModel
@@ -47,6 +48,10 @@ class ChatList : Fragment() {
         val database = Firebase.database
         val refMessage = database.getReference("applications")
         onChangeListener(refMessage)
+
+//        setFragmentResultListener("toast") { requestKey, bundle ->
+//            Toast.makeText(context, bundle.getString("toast_key") , Toast.LENGTH_LONG).show()
+//        }
 
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/fragmentWorkoutPlanDay1">
+
+
+    <fragment
+        android:id="@+id/fragmentWorkoutPlanDay1"
+        android:name="com.example.graduationproject.FragmentWorkoutPlanDay1"
+        android:label="fragment_workout_plan_day1"
+        tools:layout="@layout/fragment_workout_plan_day1" />
+
+    <fragment
+        android:id="@+id/fragmentWorkoutPlanDay2"
+        android:name="com.example.graduationproject.FragmentWorkoutPlanDay2"
+        android:label="fragment_workout_plan_day2"
+        tools:layout="@layout/fragment_workout_plan_day2" />
+
+    <fragment
+        android:id="@+id/fragmentWorkoutPlanDay3"
+        android:name="com.example.graduationproject.FragmentWorkoutPlanDay3"
+        android:label="fragment_workout_plan_day3"
+        tools:layout="@layout/fragment_workout_plan_day3" />
+
+</navigation>
