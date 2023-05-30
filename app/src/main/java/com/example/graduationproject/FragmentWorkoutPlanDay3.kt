@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -20,6 +19,9 @@ class FragmentWorkoutPlanDay3 : Fragment() {
 
     private lateinit var listExercise: MutableList<uprModel>
     private lateinit var listContent: MutableList<String>
+    lateinit var clientName: String
+    lateinit var lvlClient: String
+    lateinit var textExerciseForDay3: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +31,36 @@ class FragmentWorkoutPlanDay3 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModelForDay =
+            ViewModelProvider(requireActivity())[ViewModelForDay::class.java]
+
+        viewModelForDay.client.observe(viewLifecycleOwner) {
+            clientName = it
+        }
+
+        viewModelForDay.lvl.observe(viewLifecycleOwner) {
+            lvlClient = it
+        }
+
+        viewModelForDay.exerciseDay3.observe(viewLifecycleOwner) {
+            textExerciseForDay3 = it
+        }
+
         return inflater.inflate(R.layout.fragment_workout_plan_day3, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val textExerciseDay3 = view.findViewById<TextView>(R.id.textExercisesDay)
-        setFragmentResultListener("day2") { requestKey, bundle ->
-            Toast.makeText(context, bundle.getString("day2_key")+textExerciseDay3.text, Toast.LENGTH_SHORT).show()
-        }
+        val textExercisesDay = view.findViewById<TextView>(R.id.textExercisesDay)
 
         val db = Firebase.database
         val refExercise = db.getReference("physicalExercise")
+
+        val viewModelForDay =
+            ViewModelProvider(requireActivity())[ViewModelForDay::class.java]
+        viewModelForDay.exerciseDay3.observe(viewLifecycleOwner) {
+            textExercisesDay.text = it
+        }
 
         listExercise = mutableListOf()
         listContent = mutableListOf()
@@ -50,19 +70,18 @@ class FragmentWorkoutPlanDay3 : Fragment() {
         }
 
         val buttonAddExercise = view.findViewById<ImageButton>(R.id.buttonAddExercise)
-        val textExercisesDay = view.findViewById<TextView>(R.id.textExercisesDay)
         val spinnerExercise = view.findViewById<Spinner>(R.id.spinnerExercise)
 
         buttonAddExercise.setOnClickListener {
-
             textExercisesDay.text = "${textExercisesDay.text}" +
                     "${listExercise[spinnerExercise.selectedItemId.toInt()].content} | "
+            when(lvlClient) {
+                "Начальный" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
+                "Средний" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
+                "Продвинутый" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
+            }
 
-//            when(lvlClient) {
-//                "Начальный" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
-//                "Средний" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
-//                "Продвинутый" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
-//            }
+            viewModelForDay._exerciseDay3.value = textExercisesDay.text.toString()
         }
     }
 

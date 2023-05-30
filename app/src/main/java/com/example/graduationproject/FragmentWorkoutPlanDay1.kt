@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -23,6 +24,9 @@ class FragmentWorkoutPlanDay1 : Fragment() {
 
     private lateinit var listExercise: MutableList<uprModel>
     private lateinit var listContent: MutableList<String>
+    lateinit var clientName: String
+    lateinit var lvlClient: String
+    lateinit var textExerciseForDay1: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,16 +36,36 @@ class FragmentWorkoutPlanDay1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val viewModelForDay =
+            ViewModelProvider(requireActivity())[ViewModelForDay::class.java]
+
+        viewModelForDay.client.observe(viewLifecycleOwner) {
+            clientName = it
+        }
+
+        viewModelForDay.lvl.observe(viewLifecycleOwner) {
+            lvlClient = it
+        }
+
+        viewModelForDay.exerciseDay1.observe(viewLifecycleOwner) {
+            textExerciseForDay1 = it
+        }
+
         return inflater.inflate(R.layout.fragment_workout_plan_day1, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val textExerciseDay1 = view.findViewById<TextView>(R.id.textExercisesDay)
-        setFragmentResult("day1", bundleOf("day1_key" to textExerciseDay1.text))
+        val textExercisesDay = view.findViewById<TextView>(R.id.textExercisesDay)
 
         val db = Firebase.database
         val refExercise = db.getReference("physicalExercise")
+
+        val viewModelForDay =
+            ViewModelProvider(requireActivity())[ViewModelForDay::class.java]
+        viewModelForDay.exerciseDay1.observe(viewLifecycleOwner) {
+            textExercisesDay.text = it
+        }
 
         listExercise = mutableListOf()
         listContent = mutableListOf()
@@ -51,18 +75,20 @@ class FragmentWorkoutPlanDay1 : Fragment() {
         }
 
         val buttonAddExercise = view.findViewById<ImageButton>(R.id.buttonAddExercise)
-        val textExercisesDay = view.findViewById<TextView>(R.id.textExercisesDay)
         val spinnerExercise = view.findViewById<Spinner>(R.id.spinnerExercise)
 
         buttonAddExercise.setOnClickListener {
-
             textExercisesDay.text = "${textExercisesDay.text}" +
                     "${listExercise[spinnerExercise.selectedItemId.toInt()].content} | "
+            when(lvlClient) {
+                "Начальный" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
+                "Средний" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
+                "Продвинутый" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
+            }
 
-//            when(lvlClient) {
-//                "Начальный" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
-//                "Средний" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
-//                "Продвинутый" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
+            viewModelForDay._exerciseDay1.value = textExercisesDay.text.toString()
+//            viewModelForDay.exerciseDay1.observe(viewLifecycleOwner) {
+//                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
 //            }
         }
     }
