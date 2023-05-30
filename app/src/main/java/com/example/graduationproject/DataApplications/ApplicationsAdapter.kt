@@ -45,7 +45,7 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
                 val db = Firebase.database
                 val ref = db.getReference("applications").child(application.userName.toString())
                 ref.setValue(application)
-                createWorkoutPlan(application.lvl.toString())
+                createWorkoutPlan(application.userName.toString() ,application.lvl.toString())
             }
             itemList.setOnClickListener {
                 applicationInfo(application.userName.toString())
@@ -65,9 +65,10 @@ class ApplicationsAdapter(context: Context?): RecyclerView.Adapter<ApplicationsA
         startActivity(_context!!, appInfo, null)
     }
 
-    fun createWorkoutPlan(lvl: String) {
+    fun createWorkoutPlan(client: String, lvl: String) {
         val createWorkoutPlanIntent = Intent(_context, TrenerArea::class.java)
         createWorkoutPlanIntent.putExtra("lvl", lvl)
+        createWorkoutPlanIntent.putExtra("client", client)
         startActivity(_context!!, createWorkoutPlanIntent, null)
     }
 

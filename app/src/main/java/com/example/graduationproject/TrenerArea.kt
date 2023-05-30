@@ -7,11 +7,15 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.core.os.bundleOf
 import androidx.core.view.MenuItemCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,11 +23,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.graduationproject.databinding.ActivityTrenerAreaBinding
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import kotlin.concurrent.fixedRateTimer
 
 class TrenerArea : AppCompatActivity() {
 
     private lateinit var binding: ActivityTrenerAreaBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,6 +42,9 @@ class TrenerArea : AppCompatActivity() {
                 R.id.fragmentWorkoutPlanDay1, R.id.fragmentWorkoutPlanDay2, R.id.fragmentWorkoutPlanDay3
             )
         )
+
+        val clientName = intent.extras?.getString("client")
+        val lvl = intent.extras?.getString("lvl")
 
         val secondDay: BottomNavigationItemView = findViewById(R.id.fragmentWorkoutPlanDay2)
         secondDay.visibility = View.INVISIBLE

@@ -47,36 +47,35 @@ class CreateWorkoutPlan : AppCompatActivity() {
         }
 
         binding.buttonAddExercise.setOnClickListener {
-
-            binding.textExercisesDay.text = "${binding.textExercisesDay.text}" +
-                    "${listExercise[binding.spinnerExercise.selectedItemId.toInt()].content} | "
-
             when(lvlClient) {
-                "Начальнай" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
+                "Начальный" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl1}\n"
                 "Средний" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl2}\n"
                 "Продвинутый" -> binding.textExercisesDay.text = "${binding.textExercisesDay.text}"+"${listExercise[binding.spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
             }
+
+            binding.textExercisesDay.text = "${binding.textExercisesDay.text}" +
+                    "${listExercise[binding.spinnerExercise.selectedItemId.toInt()].content} | "
         }
 
-//        binding.buttonAddDay.setOnClickListener {
-//            val myTextView = TextView(this)
-//            myTextView.apply {
-//                background = getDrawable(R.color.edit_text_background)
-//                backgroundTintList = getColorStateList(R.color.hint_color)
-//                backgroundTintMode = PorterDuff.Mode.ADD
-//            }
-//
-//            val textLP = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
-//            textLP.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID
-//            textLP.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID
-//            textLP.topToBottom = R.id.spinnerExercise
-//            textLP.marginStart = binding.textExercisesDay.marginStart
-//            textLP.marginEnd = binding.textExercisesDay.marginEnd
-//            textLP.topMargin = 100
-//
-//            binding.root.addView(myTextView, textLP)
-//
-//        }
+        binding.buttonAddDay.setOnClickListener {
+            val myTextView = TextView(this)
+            myTextView.apply {
+                background = getDrawable(R.color.edit_text_background)
+                backgroundTintList = getColorStateList(R.color.hint_color)
+                backgroundTintMode = PorterDuff.Mode.ADD
+            }
+
+            val textLP = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+            textLP.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID
+            textLP.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID
+            textLP.topToBottom = R.id.spinnerExercise
+            textLP.marginStart = binding.textExercisesDay.marginStart
+            textLP.marginEnd = binding.textExercisesDay.marginEnd
+            textLP.topMargin = 100
+
+            binding.root.addView(myTextView, textLP)
+
+        }
 
     }
 
