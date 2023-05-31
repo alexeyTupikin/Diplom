@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentWorkoutPlanDay1">
+    tools:context=".ModelCreateWorkoutPlan.Fragments.FragmentWorkoutPlanDay1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
+
             android:background="@color/edit_text_background"
             android:backgroundTint="@color/hint_color"
             android:backgroundTintMode="add"

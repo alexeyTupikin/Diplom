@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_window"
     android:forceDarkAllowed="true"
-    tools:context=".LoginWindow">
+    tools:context=".CommonWindow.LoginWindow">
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"

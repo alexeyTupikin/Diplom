@@ -18,30 +18,30 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
-            android:name=".TrenerArea"
+            android:name=".ModuleClient.SeeWorkoutPlan"
+            android:exported="false" />
+        <activity
+            android:name=".ModelCreateWorkoutPlan.WorkoutPlanArea"
             android:exported="false"
             android:label="@string/title_activity_trener_area" />
         <activity
-            android:name=".CreateWorkoutPlan"
+            android:name=".ModelCoach.Application.ApplicationInfo"
             android:exported="false" />
         <activity
-            android:name=".ApplicationInfo"
-            android:exported="false" />
-        <activity
-            android:name=".CoachArea"
+            android:name=".ModelCoach.CoachArea"
             android:exported="false"
             android:label="@string/title_activity_coach_area" />
         <activity
-            android:name=".CreateApplications"
+            android:name=".ModuleClient.CreateApplications"
             android:exported="false" />
         <activity
-            android:name=".PersonalAreaWindow"
+            android:name=".ModuleClient.PersonalAreaWindow"
             android:exported="false" />
         <activity
-            android:name=".ChatWindow"
+            android:name=".CommonWindow.ChatWindow"
             android:exported="false" />
         <activity
-            android:name=".LoginWindow"
+            android:name=".CommonWindow.LoginWindow"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
