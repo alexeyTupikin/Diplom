@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCoach.Application
+package com.example.graduationproject.TrainerModule
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -56,10 +56,6 @@ class ApplicationsList : Fragment() {
                 onChangeListener(refMessage, coach = null)
             }
         }
-
-
-//        val toastMessage = MessageModel("client", "message")
-//        setFragmentResult("toast", bundleOf("toast_key" to toastMessage))
     }
 
     private fun onChangeListener(dRef: DatabaseReference, coach: String?) {

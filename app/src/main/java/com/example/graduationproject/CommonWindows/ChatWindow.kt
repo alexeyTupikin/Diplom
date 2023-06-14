@@ -1,4 +1,4 @@
-package com.example.graduationproject.CommonWindow
+package com.example.graduationproject.CommonWindows
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

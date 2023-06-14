@@ -1,4 +1,4 @@
-package com.example.graduationproject.CommonWindow
+package com.example.graduationproject.CommonWindows
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import com.example.graduationproject.ModelCoach.CoachArea
-import com.example.graduationproject.ModuleClient.PersonalAreaWindow
+import com.example.graduationproject.TrainerModule.CoachArea
+import com.example.graduationproject.ClientModule.PersonalAreaWindow
 import com.example.graduationproject.databinding.ActivityLoginWindowBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

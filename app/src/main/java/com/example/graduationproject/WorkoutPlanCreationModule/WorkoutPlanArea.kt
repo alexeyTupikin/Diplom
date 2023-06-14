@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCreateWorkoutPlan
+package com.example.graduationproject.WorkoutPlanCreationModule
 
 import android.os.Bundle
 import android.view.View
@@ -9,15 +9,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.graduationproject.DataPackage.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataPackage.WorkoutPlan.WorkoutPlanModel
-import com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.ViewModels.ViewModelForDay
+import com.example.graduationproject.WorkoutPlanCreationModule.Fragments.ViewModels.ViewModelForDay
 import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivityTrenerAreaBinding
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -117,5 +115,4 @@ class WorkoutPlanArea : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
 }

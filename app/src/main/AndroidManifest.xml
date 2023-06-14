@@ -18,39 +18,30 @@
         android:theme="@style/Theme.GraduationProject"
         tools:targetApi="31">
         <activity
-            android:name=".ModuleClient.SeeWorkoutPlan"
+            android:name=".ClientModule.SeeWorkoutPlan"
             android:exported="false" />
         <activity
-            android:name=".ModelCreateWorkoutPlan.WorkoutPlanArea"
+            android:name=".WorkoutPlanCreationModule.WorkoutPlanArea"
             android:exported="false"
             android:label="@string/title_activity_trener_area" />
         <activity
-            android:name=".ModelCoach.Application.ApplicationInfo"
+            android:name=".CommonWindows.ApplicationInfo"
             android:exported="false" />
         <activity
-            android:name=".ModelCoach.CoachArea"
+            android:name=".TrainerModule.CoachArea"
             android:exported="false"
             android:label="@string/title_activity_coach_area" />
         <activity
-            android:name=".ModuleClient.CreateApplications"
+            android:name=".ClientModule.CreateApplications"
             android:exported="false" />
         <activity
-            android:name=".ModuleClient.PersonalAreaWindow"
+            android:name=".ClientModule.PersonalAreaWindow"
             android:exported="false" />
         <activity
-            android:name=".CommonWindow.ChatWindow"
+            android:name=".CommonWindows.ChatWindow"
             android:exported="false" />
         <activity
-            android:name=".CommonWindow.LoginWindow"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
+            android:name=".CommonWindows.LoginWindow"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

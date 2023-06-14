@@ -1,16 +1,18 @@
-package com.example.graduationproject.ModelCoach
+package com.example.graduationproject.TrainerModule
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.DataPackage.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataPackage.DataChat.ChatAdapter
 import com.example.graduationproject.DataPackage.DataChat.ChatModel
 import com.example.graduationproject.DataPackage.DataMessage.MessageModel
 import com.example.graduationproject.R
+import com.example.graduationproject.databinding.FragmentChatListBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -45,11 +47,13 @@ class ChatList : Fragment() {
         val database = Firebase.database
         val refMessage = database.getReference("applications")
         onChangeListener(refMessage)
+    }
 
-//        setFragmentResultListener("toast") { requestKey, bundle ->
-//            Toast.makeText(context, bundle.getString("toast_key") , Toast.LENGTH_LONG).show()
-//        }
-
+    override fun onStart() {
+        super.onStart()
+        val database = Firebase.database
+        val refMessage = database.getReference("applications")
+        onChangeListener(refMessage)
     }
 
     private fun onChangeListener(dRef: DatabaseReference) {
@@ -89,5 +93,4 @@ class ChatList : Fragment() {
             }
         })
     }
-
 }

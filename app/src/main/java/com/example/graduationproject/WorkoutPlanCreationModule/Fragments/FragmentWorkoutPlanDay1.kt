@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCreateWorkoutPlan.Fragments
+package com.example.graduationproject.WorkoutPlanCreationModule.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.ViewModels.ViewModelForDay
+import com.example.graduationproject.WorkoutPlanCreationModule.Fragments.ViewModels.ViewModelForDay
 import com.example.graduationproject.R
 import com.example.graduationproject.uprModel
 import com.google.firebase.database.DataSnapshot
@@ -87,9 +87,6 @@ class FragmentWorkoutPlanDay1 : Fragment() {
             }
 
             viewModelForDay._exerciseDay1.value = textExercisesDay.text.toString()
-//            viewModelForDay.exerciseDay1.observe(viewLifecycleOwner) {
-//                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 

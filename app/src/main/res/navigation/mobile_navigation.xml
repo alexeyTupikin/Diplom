@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/applicationsList"
-        android:name="com.example.graduationproject.ModelCoach.Application.ApplicationsList"
+        android:name="com.example.graduationproject.TrainerModule.ApplicationsList"
         android:label="fragment_applications_list"
         tools:layout="@layout/fragment_applications_list" />
 
     <fragment
         android:id="@+id/chatList"
-        android:name="com.example.graduationproject.ModelCoach.ChatList"
+        android:name="com.example.graduationproject.TrainerModule.ChatList"
         android:label="fragment_chat_list"
         tools:layout="@layout/fragment_chat_list" />
 

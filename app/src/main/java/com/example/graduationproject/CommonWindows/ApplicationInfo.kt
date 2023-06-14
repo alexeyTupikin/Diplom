@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCoach.Application
+package com.example.graduationproject.CommonWindows
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

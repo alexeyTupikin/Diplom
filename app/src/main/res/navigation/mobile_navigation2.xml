@@ -8,19 +8,19 @@
 
     <fragment
         android:id="@+id/fragmentWorkoutPlanDay1"
-        android:name="com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.FragmentWorkoutPlanDay1"
+        android:name="com.example.graduationproject.WorkoutPlanCreationModule.Fragments.FragmentWorkoutPlanDay1"
         android:label="fragment_workout_plan_day1"
         tools:layout="@layout/fragment_workout_plan_day1" />
 
     <fragment
         android:id="@+id/fragmentWorkoutPlanDay2"
-        android:name="com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.FragmentWorkoutPlanDay2"
+        android:name="com.example.graduationproject.WorkoutPlanCreationModule.Fragments.FragmentWorkoutPlanDay2"
         android:label="fragment_workout_plan_day2"
         tools:layout="@layout/fragment_workout_plan_day2" />
 
     <fragment
         android:id="@+id/fragmentWorkoutPlanDay3"
-        android:name="com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.FragmentWorkoutPlanDay3"
+        android:name="com.example.graduationproject.WorkoutPlanCreationModule.Fragments.FragmentWorkoutPlanDay3"
         android:label="fragment_workout_plan_day3"
         tools:layout="@layout/fragment_workout_plan_day3" />
 

@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.graduationproject.ModelCoach.Application.ApplicationInfo
-import com.example.graduationproject.ModelCreateWorkoutPlan.WorkoutPlanArea
+import com.example.graduationproject.CommonWindows.ApplicationInfo
+import com.example.graduationproject.WorkoutPlanCreationModule.WorkoutPlanArea
 import com.example.graduationproject.databinding.ApplicationsItemModelBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

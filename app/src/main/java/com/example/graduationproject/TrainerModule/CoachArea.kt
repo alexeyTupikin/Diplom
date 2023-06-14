@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCoach
+package com.example.graduationproject.TrainerModule
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

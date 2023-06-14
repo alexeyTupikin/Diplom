@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModuleClient
+package com.example.graduationproject.ClientModule
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -13,10 +13,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.graduationproject.CommonWindow.ChatWindow
+import com.example.graduationproject.CommonWindows.ChatWindow
 import com.example.graduationproject.DataPackage.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataPackage.DataUserPersonal.UserModel
-import com.example.graduationproject.ModelCoach.Application.ApplicationInfo
+import com.example.graduationproject.CommonWindows.ApplicationInfo
 import com.example.graduationproject.databinding.ActivityPersonalAreaWindowBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -76,7 +76,7 @@ class PersonalAreaWindow : AppCompatActivity() {
                 refApplicationStatus.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val application = snapshot.getValue(ApplicationsModel::class.java)
-                        if((application != null) && (application.status == "В обработке")) {
+                        if((application != null) && (application.status == "Создана")) {
                             applicationInfo()
                         } else if((application != null) && (application.status == "План создан")) {
                             workoutPlan()

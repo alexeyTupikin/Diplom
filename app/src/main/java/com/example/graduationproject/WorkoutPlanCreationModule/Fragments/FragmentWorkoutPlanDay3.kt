@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModelCreateWorkoutPlan.Fragments
+package com.example.graduationproject.WorkoutPlanCreationModule.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import com.example.graduationproject.ModelCreateWorkoutPlan.Fragments.ViewModels.ViewModelForDay
+import com.example.graduationproject.WorkoutPlanCreationModule.Fragments.ViewModels.ViewModelForDay
 import com.example.graduationproject.R
 import com.example.graduationproject.uprModel
 import com.google.firebase.database.DataSnapshot
@@ -17,13 +17,13 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class FragmentWorkoutPlanDay2 : Fragment() {
+class FragmentWorkoutPlanDay3 : Fragment() {
 
     private lateinit var listExercise: MutableList<uprModel>
     private lateinit var listContent: MutableList<String>
     lateinit var clientName: String
     lateinit var lvlClient: String
-    lateinit var textExerciseForDay2: String
+    lateinit var textExerciseForDay3: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +44,11 @@ class FragmentWorkoutPlanDay2 : Fragment() {
             lvlClient = it
         }
 
-        viewModelForDay.exerciseDay2.observe(viewLifecycleOwner) {
-            textExerciseForDay2 = it
+        viewModelForDay.exerciseDay3.observe(viewLifecycleOwner) {
+            textExerciseForDay3 = it
         }
 
-        return inflater.inflate(R.layout.fragment_workout_plan_day2, container, false)
+        return inflater.inflate(R.layout.fragment_workout_plan_day3, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ class FragmentWorkoutPlanDay2 : Fragment() {
 
         val viewModelForDay =
             ViewModelProvider(requireActivity())[ViewModelForDay::class.java]
-        viewModelForDay.exerciseDay2.observe(viewLifecycleOwner) {
+        viewModelForDay.exerciseDay3.observe(viewLifecycleOwner) {
             textExercisesDay.text = it
         }
 
@@ -83,10 +83,7 @@ class FragmentWorkoutPlanDay2 : Fragment() {
                 "Продвинутый" -> textExercisesDay.text = "${textExercisesDay.text}"+"${listExercise[spinnerExercise.selectedItemId.toInt()].qty_lvl3}\n"
             }
 
-            viewModelForDay._exerciseDay2.value = textExercisesDay.text.toString()
-//            viewModelForDay.exerciseDay2.observe(viewLifecycleOwner) {
-//                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-//            }
+            viewModelForDay._exerciseDay3.value = textExercisesDay.text.toString()
         }
     }
 

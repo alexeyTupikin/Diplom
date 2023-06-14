@@ -1,12 +1,9 @@
-package com.example.graduationproject.ModuleClient
+package com.example.graduationproject.ClientModule
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import com.example.graduationproject.DataPackage.DataApplications.ApplicationsModel
 import com.example.graduationproject.DataPackage.WorkoutPlan.WorkoutPlanModel
-import com.example.graduationproject.R
 import com.example.graduationproject.databinding.ActivitySeeWorkoutPlanBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

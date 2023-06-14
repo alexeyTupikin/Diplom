@@ -1,4 +1,4 @@
-package com.example.graduationproject.ModuleClient
+package com.example.graduationproject.ClientModule
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
